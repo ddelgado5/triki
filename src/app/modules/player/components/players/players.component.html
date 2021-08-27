@@ -1,0 +1,24 @@
+<p>players works!</p>
+<!--     () del html al js o ts -->
+<!--     [] del js o ts al html  -->
+<!--     | pipes parsear -->
+
+<form [formGroup]="playersForm">
+  <div>
+    <input formControlName="playerOne" type="text" name="player-one" placeholder="Jugador 1"/>
+  </div>
+    <div *ngIf="playersForm.controls['playerOne'].errors?.required && (playersForm.controls['playerOne'].dirty || playersForm.controls['playerOne'].touched)">
+    Es requerido
+    </div>
+  <div>
+    <input formControlName="playerTwo" type="text" name="player-two" placeholder="Jugador 2" />
+  </div>
+  <div *ngIf="playersForm.controls['playerTwo'].errors?.required && (playersForm.controls['playerTwo'].dirty || playersForm.controls['playerTwo'].touched)"> 
+    Es requerido
+  </div>
+  <div *ngIf="playersForm.controls['playerTwo'].errors?.email && (playersForm.controls['playerTwo'].dirty || playersForm.controls['playerTwo'].touched)" > 
+    Debe ser un correo electrònico
+  </div>
+
+  <button (click)="entryPlayers()" [disabled]="playersForm.invalid" >Ingresar</button>
+</form>
